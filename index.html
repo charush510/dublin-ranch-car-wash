@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dublin Ranch Car Wash</title>
+  <meta name="description" content="Exterior hand car wash by local Dublin Ranch middle school students. Only $10 per car." />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5fbff;
+      color: #102033;
+      line-height: 1.6;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(5, 35, 74, 0.72), rgba(5, 35, 74, 0.72)),
+        url("https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: clamp(1.15rem, 2.6vw, 1.55rem);
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background: #27d17f;
+      color: #06233f;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #0b4f8a;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 900px;
+      margin: -55px auto 0;
+      gap: 18px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 26px 18px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(17, 52, 84, 0.14);
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #0b72c9;
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #072c4f;
+    }
+
+    .section-title p {
+      color: #52697f;
+      max-width: 680px;
+      margin: 8px auto 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(17, 52, 84, 0.1);
+      border: 1px solid #e7f1f8;
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: #09345d;
+      margin-bottom: 10px;
+    }
+
+    .price-box {
+      background: linear-gradient(135deg, #0b72c9, #18b7ff);
+      color: white;
+      border-radius: 30px;
+      padding: 36px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(11, 114, 201, 0.27);
+    }
+
+    .price {
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .price-box p {
+      font-size: 1.15rem;
+      margin-top: 12px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      counter-reset: step;
+    }
+
+    .step {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(17, 52, 84, 0.09);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #27d17f;
+      color: #063050;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .booking {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .booking-panel {
+      background: #072c4f;
+      color: white;
+      padding: 34px;
+      border-radius: 28px;
+      box-shadow: 0 16px 42px rgba(7, 44, 79, 0.22);
+    }
+
+    .booking-panel h2 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .booking-panel p {
+      color: #d9ecff;
+      margin-bottom: 22px;
+    }
+
+    .email-preview {
+      background: white;
+      color: #18314a;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(17, 52, 84, 0.1);
+    }
+
+    .email-preview ul {
+      list-style: none;
+      margin-top: 14px;
+    }
+
+    .email-preview li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eef4f8;
+    }
+
+    .contact {
+      background: white;
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 12px 32px rgba(17, 52, 84, 0.1);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .contact a {
+      color: #0b72c9;
+      font-weight: bold;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: #061f38;
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 800px) {
+      .stats,
+      .cards,
+      .steps,
+      .booking,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 82vh;
+      }
+
+      main {
+        margin-top: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">Dublin Ranch Summer Special</div>
+      <h1>Dublin Ranch Car Wash</h1>
+      <p>Your car gets clean. We earn for summer. Exterior hand wash by local middle school students, only $10 per car.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="mailto:dublinranchcarwash@gmail.com?subject=Car%20Wash%20Appointment%20Request&body=Name:%0D%0AAddress:%0D%0APhone:%0D%0APreferred%20Date:%0D%0APreferred%20Time:%0D%0AVehicle%20Type:%0D%0A">
+          Schedule Appointment
+        </a>
+        <a class="btn btn-secondary" href="tel:9252486673">Call or Text Us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card">
+      <strong>$10</strong>
+      <span>per vehicle</span>
+    </div>
+    <div class="stat-card">
+      <strong>100%</strong>
+      <span>hand wash</span>
+    </div>
+    <div class="stat-card">
+      <strong>Local</strong>
+      <span>Dublin Ranch students</span>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <div class="section-title">
+        <h2>Exterior Hand Wash</h2>
+        <p>Simple, affordable, and perfect when your car needs a quick summer refresh.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🧼</div>
+          <h3>Hand Washed</h3>
+          <p>We wash the outside of your car carefully by hand.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛞</div>
+          <h3>Wheels Cleaned</h3>
+          <p>We rinse and clean the wheels to help your car look fresh.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✨</div>
+          <h3>Hand Dried</h3>
+          <p>We finish with a hand-dried exterior so it looks neat and shiny.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="price-box">
+      <h2>Flat Summer Price</h2>
+      <div class="price">$10</div>
+      <p>Exterior only. No hidden fees. Just a clean car and happy neighbors.</p>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>How It Works</h2>
+        <p>Booking is easy. Click the appointment button and send us your details.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Pick a Time</h3>
+          <p>Email, call, or text us with your preferred date and time.</p>
+        </div>
+        <div class="step">
+          <h3>Share Your Details</h3>
+          <p>Send your name, address, phone number, and vehicle type.</p>
+        </div>
+        <div class="step">
+          <h3>Enjoy a Clean Car</h3>
+          <p>We hand wash the exterior and get your car looking fresh.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking" id="book">
+      <div class="booking-panel">
+        <h2>Ready to Book?</h2>
+        <p>The Schedule Appointment button opens your email app with the booking details already filled in.</p>
+        <a class="btn btn-primary" href="mailto:dublinranchcarwash@gmail.com?subject=Car%20Wash%20Appointment%20Request&body=Name:%0D%0AAddress:%0D%0APhone:%0D%0APreferred%20Date:%0D%0APreferred%20Time:%0D%0AVehicle%20Type:%0D%0A">
+          Schedule Appointment
+        </a>
+      </div>
+
+      <div class="email-preview">
+        <h3>Your email will ask for:</h3>
+        <ul>
+          <li>Name</li>
+          <li>Address</li>
+          <li>Phone number</li>
+          <li>Preferred date</li>
+          <li>Preferred time</li>
+          <li>Vehicle type</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Run by local middle school students serving Dublin Ranch neighbors.</p>
+      </div>
+
+      <div class="contact">
+        <div>
+          <h3>Names</h3>
+          <p>Charush, Veer, Aarav</p>
+        </div>
+        <div>
+          <h3>Phone</h3>
+          <p><a href="tel:9252486673">925-248-6673</a></p>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p><a href="mailto:dublinranchcarwash@gmail.com">dublinranchcarwash@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Dublin Ranch Car Wash</strong></p>
+    <p>Clean Cars. Happy Neighbors. Productive Summer.</p>
+  </footer>
+</body>
+</html>
